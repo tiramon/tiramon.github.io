@@ -2,18 +2,19 @@
 
 ## Preconditions
 - You got Piwik installed, configured and running
+- You how to integrate Piwik in a 'normal' website
 - You got a working Angular 2+ Website
 
 ## The Problem
 Piwik is design for normal websites. Every time the user navigates to another page the Piwik JavaScript is loaded via the script tag in the had and a request is send to the Piwik server. So far so good... but Angular is a SPA ([Single-page-application](https://en.wikipedia.org/wiki/Single-page_application)). So on the initial start of the site piwik is called as on any other webpage, but on any further site intern navigation the page is not reloaded and so the piwik script is also only called on the initial request.
 
 ## Solution
-After a while of searching i found this website with a nice instruction on how to get piwik running in a SPA 
+After a while of searching i found this website with a nice instruction on how to get piwik running in a SPA
 https://lmu-pms.github.io/irom-blog/posts/Angular2WithPiwik.html
 But there are some flaws in the instruction at this website and on the referenced library site, so i will write my own short instruction.
 
 ### 1. Install Angular2Piwik
-Angular2Piwik is a simple wrapper for the piwik api.
+[Angular2Piwik](https://github.com/awronka/Angular2Piwik) is a simple wrapper for the piwik api.
 
 According to the instruction, their is also another library [Abgulartics2](https://github.com/angulartics/angulartics2) which also supports other analytics provider, but like the writer of the other instruction i don't want all that overhead for the other providers. So i also use [Angular2Piwik](https://github.com/awronka/Angular2Piwik).
 ```console
@@ -51,7 +52,7 @@ Not sure if this works ... havn't tried it yet and there is a issue on the Angul
 You can configure your Piwik in your main component.
 ```ts
 import { Component } from '@angular/core';
-import { InitializePiwik } from 'Angular2Piwik';
+import { InitializePiwik } from 'angular2piwik';
 
 @Component({
   selector: 'app',
