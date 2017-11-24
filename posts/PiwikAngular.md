@@ -1,18 +1,18 @@
 # Using Piwik in an Angular 2+ Website
 
-##Preconditions
+## Preconditions
 - You got Piwik installed, configured and running
 - You got a working Angular 2+ Website
 
-##The Problem
+## The Problem
 Piwik is design for normal websites. Every time the user navigates to another page the Piwik JavaScript is loaded via the script tag in the had and a request is send to the Piwik server. So far so good... but Angular is a SPA ([Single-page-application](https://en.wikipedia.org/wiki/Single-page_application)). So on the initial start of the site piwik is called as on any other webpage, but on any further site intern navigation the page is not reloaded and so the piwik script is also only called on the initial request.
 
-##Solution
+## Solution
 After a while of searching i found this website with a nice instruction on how to get piwik running in a SPA 
 https://lmu-pms.github.io/irom-blog/posts/Angular2WithPiwik.html
 But there are some flaws in the instruction at this website and on the referenced library site, so i will write my own short instruction.
 
-###1. Install Angular2Piwik
+### 1. Install Angular2Piwik
 Angular2Piwik is a simple wrapper for the piwik api.
 
 According to the instruction, their is also another library [Abgulartics2](https://github.com/angulartics/angulartics2) which also supports other analytics provider, but like the writer of the other instruction i don't want all that overhead for the other providers. So i also use [Angular2Piwik](https://github.com/awronka/Angular2Piwik).
@@ -20,7 +20,7 @@ According to the instruction, their is also another library [Abgulartics2](https
 npm install --save angular2piwik
 ```
 
-###2. Include Angular2Piwik in your Website
+### 2. Include Angular2Piwik in your Website
 First include the module to your main module.
 ```ts
 // app.module.ts
@@ -43,9 +43,9 @@ This works find on any non case sensitive os like windows. But it took me quite 
 The reason is that the entry in the node_modules folder is `angular2piwik`. Windows doesn't care for case and has no problem finding the right folder, but linux search for `Angular2Piwik` where only a àngular2piwik` does exist ... can't work.
 
 For the following step there are 2 ways to install and configure piwik to your site.
-####2.1 Include the Piwik JS the usual way
+#### 2.1 Include the Piwik JS the usual way
 In your Piwik installation you can get a tracking code snippet for a website. Install it as last entry in the head script of your `index.html` as recommmended by Piwik.
-####2.2 Configure it in typescript
+#### 2.2 Configure it in typescript
 Not sure if this works ... havn't tried it yet and there is a issue on the Angular2Piwik website that claims the documentation is incomplete
 
 You can configure your Piwik in your main component, the call to the `usePiwikTracker.trackPageView();` makes sure that your page is tracke on the first load
@@ -70,7 +70,7 @@ export class AppComponent {
 }
 ```
 
-###3. Setup a central tracking
+### 3. Setup a central tracking
 On the other instructions they say that the `trackPageView()` method should be called in any components that you want to track.
 I got a few problems with this approach:
 1. alot of work
