@@ -48,24 +48,22 @@ In your Piwik installation you can get a tracking code snippet for a website. In
 #### 2.2 Configure it in typescript
 Not sure if this works ... havn't tried it yet and there is a issue on the Angular2Piwik website that claims the documentation is incomplete
 
-You can configure your Piwik in your main component, the call to the `usePiwikTracker.trackPageView();` makes sure that your page is tracke on the first load
+You can configure your Piwik in your main component.
 ```ts
-// component
 import { Component } from '@angular/core';
-import { ConfigurePiwikTracker, UsePiwikTracker } from 'Angular2Piwik';
+import { InitializePiwik } from 'Angular2Piwik';
 
 @Component({
   selector: 'app',
+  providers: [ initializePiwik ],
   template: `<router-outlet></router-outlet>` // Or what your root template is.
 })
 export class AppComponent {
   constructor(
-    private configurePiwikTracker: ConfigurePiwikTracker
-    private usePiwikTracker: UsePiwikTracker
+    private initializePiwik: InitializePiwik
     ) {
-      configurePiwikTracker.setUserId('test-123');
-      configurePiwikTracker.setDocumentTitle();
-      usePiwikTracker.trackPageView();
+      const url = `//*************:*****/anayltics/`; // set your url to whatever should be communicating with Piwik with the correct backslashes
+      initializePiwik.init(url);
     }
 }
 ```
