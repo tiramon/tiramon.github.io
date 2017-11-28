@@ -5,3 +5,4 @@
 - http://russianaicup.ru/
 - https://halite.io/
 - https://screeps.com/
+- https://booking.riddles.io/
